@@ -43,6 +43,12 @@ class MbedBleHID : public Gap::EventHandler,
     /** Initialize Bluetooth Low Energy */
     void initialize();
 
+    /*
+      * @brief   Set the battery level.
+      * @param   level : Battery level in percent. (0-100) 
+    */
+    void setBatteryLevel(int level);
+
     // -- Getters --
     inline bool connected() const { return connected_; }
     inline bool has_error() const { return error_ != BLE_ERROR_NONE; }
