@@ -1,3 +1,6 @@
+⚠️ Important
+Added Battery level implementation in this fork
+
 ```diff
 ⚠️ Important
 - This version is currently deprecated.
