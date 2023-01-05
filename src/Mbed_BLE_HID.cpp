@@ -61,7 +61,7 @@ static uint64_t GetElapsedTimeMilliseconds() {
 const char MbedBleHID::kDefaultDeviceName[]       = "Mbed-BLE-HID";
 const char MbedBleHID::kDefaultManufacturerName[] = "Acme Interactive";
 const char MbedBleHID::kDefaultVersionString[]    = "1234";
-const int MbedBleHID::kDefaultBatteryLevel        = 98;
+const int MbedBleHID::kDefaultBatteryLevel              = 0;
 
 /* -------------------------------------------------------------------------- */
 
@@ -89,6 +89,14 @@ void MbedBleHID::initialize()
 
 uint64_t MbedBleHID::connection_time() const {
   return GetElapsedTimeMilliseconds() - lastConnection_;
+}
+
+/*
+  * @brief   Set the battery level.
+  * @param   level : Battery level in percent. (0-100) 
+*/
+void MbedBleHID::setBatteryLevel(int level) {
+  services_.battery.get()->updateBatteryLevel(level);
 }
 
 void MbedBleHID::postInitialization(BLE::InitializationCompleteCallbackContext *params)
